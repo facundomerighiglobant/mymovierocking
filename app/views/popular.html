@@ -1,0 +1,14 @@
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr class="info">
+      <th><h3>Latest Releases</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="movie in movies" ng-click="changeView('detail', movie)">
+      <td>
+        <h5>{{movie.title}}</h5>
+      </td>
+    </tr>
+  </tbody> 
+</table>

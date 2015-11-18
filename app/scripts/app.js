@@ -14,7 +14,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'popularMoviesService',
+    'movieCreatorService',
+    'movieHolderService'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -23,10 +26,20 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/popular', {
+        templateUrl: 'views/popular.html',
+        controller: 'MoviesCtrl',
+        controllerAs: 'moviesCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/detail', {
+        templateUrl: 'views/detail.html',
+        controller: 'MovieDetailCtrl',
+        controllerAs: 'movieDetail'
       })
       .otherwise({
         redirectTo: '/'
