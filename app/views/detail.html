@@ -1,11 +1,12 @@
 <button class="btn btn-default btn-block" ng-click="changeView('popular')">Return</button>
 
 <div class="clearfix" height="185">
-  <img id="poster-img" class="pull-left" ng-src="{{imgUrl}}" alt="Movie poster" height="185">
+  <div width="123" height="185"><img id="poster-img" class="pull-left" ng-src="{{imgUrl}}" alt="Movie poster" height="185"></div>
   <h3 class="text-center">
     {{movie.title}}
   </h3>
-  <img class="center-block" id="star" ng-src="http://www.appturbo.com/assets/image/star.png" alt="Set favorite">
+  <img class="center-block" id="star" ng-click="setFavorite(movie)"
+  ng-src="http://www.appturbo.com/assets/image/star.png" alt="Set favorite"/>
 </div>
 
 <h4> Overview: </h4>

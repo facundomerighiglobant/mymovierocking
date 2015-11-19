@@ -17,7 +17,9 @@ angular
     'ngTouch',
     'popularMoviesService',
     'movieCreatorService',
-    'movieHolderService'
+    'movieHolderService',
+    'ngStorage',
+    'favoriteService'
   ])
   .config(function ($routeProvider) {
     $routeProvider
