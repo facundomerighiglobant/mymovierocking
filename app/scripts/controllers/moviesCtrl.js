@@ -18,8 +18,8 @@ angular.module('mymovierockingApp')
     });
 
     $scope.changeView = function(view, movie){
-      $location.path(view); // path not hash
-      movieHolder.selectMovie(movie);
+      $location.path(view);
+      movieHolder.save(movie);
     };
 
   }]);
