@@ -23,7 +23,7 @@ angular.module('mymovierockingApp')
     $scope.setFavorite = function(movie) {
       if(!Favorites.alreadyAdded(movie.title)) {
         console.log('Saved');
-        Favorites.save(movie.title, movie);
+        Favorites.save(movie);
       }
       else {
         console.log('Unsaved');

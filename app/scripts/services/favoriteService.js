@@ -4,23 +4,42 @@ angular.module('favoriteService', [])
 .factory('Favorites', ['$window',
   function ($window) {
 
+    var localStorage = $window.localStorage;
+    var key = 'myFavoriteMovies';
+    var myMovies = [];
+    localStorage.setItem(key, JSON.stringify(myMovies));
+
   return {
-    save: function(key, movie) {
-      $window.localStorage.setItem(key,JSON.stringify(movie));
+    save: function(movie) {
+      var movies = [];
+      movies = JSON.parse(localStorage.getItem(key));
+      movies.push(movie);
+      localStorage.setItem(key, JSON.stringify(movies));
     },
 
     alreadyAdded: function(title) {
-      for(var key in $window.localStorage) {
-        if(key === title) {
+      var movies = [];
+      movies = JSON.parse(localStorage.getItem(key));
+      for(var i=0; i<movies.length; i++) {
+        if(movies[i].title === title) {
           return true;
         }
       }
       return false;
     },
 
-    delete: function(key) {
-      $window.localStorage.removeItem(key);
+    delete: function(title) {
+      var movies = [];
+      movies = JSON.parse(localStorage.getItem(key));
+      for (var i =0; i < movies.length; i++){
+        if (movies[i].title === title) {
+          movies.splice(i,1);
+          localStorage.setItem(key, JSON.stringify(movies));
+          break;
+        }
+      }
     }
+
   };
 
 }]);
