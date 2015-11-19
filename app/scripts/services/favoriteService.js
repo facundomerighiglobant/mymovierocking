@@ -6,8 +6,10 @@ angular.module('favoriteService', [])
 
     var localStorage = $window.localStorage;
     var key = 'myFavoriteMovies';
-    var myMovies = [];
-    localStorage.setItem(key, JSON.stringify(myMovies));
+    if(localStorage.getItem(key) === null) {
+      var myMovies = [];
+      localStorage.setItem(key, JSON.stringify(myMovies));
+    }
 
   return {
     save: function(movie) {

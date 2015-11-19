@@ -10,7 +10,7 @@ angular.module('mymovierockingApp')
 
     $scope.changeView = function(view){
       $location.path(view);
-      movieHolder.save(null);
+      movieHolder.remove();
     };
 
     $scope.starClass = function(movie) {

@@ -1,20 +1,25 @@
 'use strict';
 
 angular.module('movieHolderService', [])
-  .service('movieHolder', function() {
-  var selectedMovie = null;
+  .service('movieHolder', ['$window', function ($window) {
 
-  var save = function(movie) {
-      selectedMovie = movie;
-  };
-
-  var get = function(){
-      return selectedMovie;
-  };
+  var localStorage = $window.localStorage;
+  var key = 'selectedMovie';
 
   return {
-    save: save,
-    get: get
+    save: function(movie) {
+      var selectedMovie = movie;
+      localStorage.setItem(key, JSON.stringify(selectedMovie));
+    },
+
+    get: function(){
+      return JSON.parse(localStorage.getItem(key));
+    },
+
+    remove: function(){
+      var selectedMovie = {};
+      localStorage.setItem(key, JSON.stringify(selectedMovie));
+    }
   };
 
-});
+}]);
