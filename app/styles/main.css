@@ -9,6 +9,20 @@ body {
   padding: 0;
 }
 
+.glyphicon {
+  display: block;
+  text-align: center;
+  font-size: 50px;
+}
+
+#poster-img {
+  margin: 20px 10px 0px 0px;
+}
+
+#star {
+  margin-top: 20px;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
