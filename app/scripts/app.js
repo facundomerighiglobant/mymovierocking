@@ -18,7 +18,6 @@ angular
     'popularMoviesService',
     'movieCreatorService',
     'movieHolderService',
-    'ngStorage',
     'favoriteService'
   ])
   .config(function ($routeProvider) {
