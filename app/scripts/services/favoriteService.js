@@ -6,7 +6,7 @@ angular.module('favoriteService', [])
 
   return {
     save: function(key, movie) {
-      $window.localStorage[key] = JSON.stringify(movie);
+      $window.localStorage.setItem(key,JSON.stringify(movie));
     },
 
     alreadyAdded: function(title) {

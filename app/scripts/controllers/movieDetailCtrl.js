@@ -7,8 +7,6 @@ angular.module('mymovierockingApp')
     var starEmptyClass = 'glyphicon glyphicon-star-empty';
     
     $scope.movie = movie;
-    var imgUrl = 'http://image.tmdb.org/t/p/w500/'+ movie.posterPath +'&api_key=579989834308dc1b0309510990ad9246';
-    $scope.imgUrl = imgUrl;
 
     $scope.changeView = function(view){
       $location.path(view);
@@ -19,9 +17,7 @@ angular.module('mymovierockingApp')
       if(Favorites.alreadyAdded(movie.title)) {
         return starFullClass;
       }
-      else {
-        return starEmptyClass;
-      }
+      return starEmptyClass;
     };
 
     $scope.setFavorite = function(movie) {
