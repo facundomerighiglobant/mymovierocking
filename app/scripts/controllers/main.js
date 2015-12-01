@@ -8,12 +8,9 @@
  * Controller of the mymovierockingApp
  */
 var main = angular.module('mymovierockingApp');
-  main.controller('MainCtrl', function ($scope) {
+  main.controller('MainCtrl', ['$scope','$http', function($scope,$http) {
   	$scope.myMovies = $scope.myMovies||[];
-    this.buscarPelicula = function(idBuscado,success,error){
-      
-      error();
-    };
+    
     $scope.verDetallesPelicula = function(idBuscado){
       console.log("llega "+idBuscado);
       var selMovie = {};
@@ -29,13 +26,13 @@ var main = angular.module('mymovierockingApp');
       
     }
   	function getPeliculasRecientesSuccess(data){
-      $scope.$apply(function(){
-  		  $scope.myMovies = data;
-      });
+      
+      $scope.myMovies = data;
+      
   	}
   	function getPeliculasRecientesError(){
 		  console.log("error");
     }
-  	movieController.getPeliculasRecientes(getPeliculasRecientesSuccess,getPeliculasRecientesError);
+  	movieController.getPeliculasRecientes($http,getPeliculasRecientesSuccess,getPeliculasRecientesError);
     
-  });
+  }]);

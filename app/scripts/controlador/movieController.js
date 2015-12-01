@@ -19,13 +19,13 @@ movieController.deleteAsFav = function(movie){
 	localFavs.splice(localFavs.indexOf(movie.attributes.id));
 	localStorage.setItem("favs", JSON.stringify(localFavs));
 }
-movieController.getPeliculasRecientes = function(success,error){	
-	function getSuccess(data){
+movieController.getPeliculasRecientes = function($http,success,error){	
+	function getSuccess(response){
 		//$scope.$apply(function(){
 		movies = [];
 		localStorage.favs = localStorage.favs || [];
-    	for (var i = 0; i < data.results.length; i++) {
-  			movies[i] = new Movie(data.results[i].id,data.results[i].title,data.results[i].poster_path,data.results[i].overview);
+    	for (var i = 0; i < response.data.results.length; i++) {
+  			movies[i] = new Movie(response.data.results[i].id,response.data.results[i].title,response.data.results[i].poster_path,response.data.results[i].overview);
   			if(movieController.isFavourite(movies[i])){
   				movies[i].isFav=true;
   			}
@@ -36,5 +36,5 @@ movieController.getPeliculasRecientes = function(success,error){
 	function getError(){
 		error();
 	}
-	movieServices.getPeliculasRecientes(getSuccess,getError);
+	movieServices.getPeliculasRecientes($http,getSuccess,getError);
 }
