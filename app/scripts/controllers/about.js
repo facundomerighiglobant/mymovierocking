@@ -9,31 +9,22 @@
  */
 angular.module('mymovierockingApp')
   .controller('AboutCtrl', function ($scope) {
-  	
   	var savedMovie = JSON.parse(localStorage.getItem("selMovie"));
-  	$scope.selMovie = savedMovie;
+    console.log(savedMovie);
+  	$scope.selMovie = new Movie(savedMovie.attributes.id,savedMovie.attributes.title,savedMovie.attributes.poster_path,savedMovie.attributes.overview);
   	$scope.favText = "";
-  	$scope.selMovie.isFav = movieController.isFavourite($scope.selMovie);
-  	if($scope.selMovie.isFav)
+  	if($scope.selMovie.isFavourite())
   		$scope.favText = "Delete from my favourites";
   	else
   		$scope.favText = "Add to my favourites";
 
 	$scope.changeFav = function () {
-		if(!$scope.selMovie.isFav){
-			savedMovie.isFav=true;
-			movieController.addAsFav($scope.selMovie);
+		if(!$scope.selMovie.isFavourite()){
+			$scope.selMovie.addAsFav($scope.selMovie);
 			$scope.favText = "Delete from my favourites";
 		}else{
-			savedMovie.isFav=false;
-			movieController.deleteAsFav($scope.selMovie);
+			$scope.selMovie.deleteAsFav($scope.selMovie);
 			$scope.favText = "Add to my favourites";
 		}
 	}
-
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
   });

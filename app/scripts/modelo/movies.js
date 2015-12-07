@@ -1,39 +1,30 @@
 var Movie = function(id,title,poster_path,overview){
     this.attributes = {"id":id,"title":title,"poster_path":poster_path,"overview":overview};
-    this.isFav=false;
+    this.isFav = this.isFavourite();
 };
 Movie.prototype = {
     constructor:Movie
-    /*,
-    play:function(){
-        console.log("Playing "+this.attributes["title"]);
+    ,
+    isFavourite:function(){
+        var favData = localStorage["favs"] || "[]";
+        var localFavs = JSON.parse(favData);
+        return localFavs.indexOf(this.attributes.id)!=-1;
     },
-    stop:function(){
-        console.log("stopped");
-    },
-    set:function(string, value){
-        this.attributes[string]=value;
-    },
-    get:function(string){
-
-    },
-    subscribe: function(observer) {
-        this.handlers.push(observer);
-    },
-    unsubscribe: function(observer) {
-        this.handlers = this.handlers.filter(
-            function(item) {
-                if (item !== observer) {
-                    return item;
-                }
-            }
-        );
-    },
-
-    notify: function() {
-        for( i = 0; i < this.handlers.length; i++) { 
-            handlers[i].update(); 
+    addAsFav:function(){
+        if(!this.isFavourite()){
+            var favData = localStorage["favs"] || "[]";
+            var localFavs = JSON.parse(favData);
+            localFavs.push(this.attributes.id);
+            localStorage.setItem("favs", JSON.stringify(localFavs));
+            console.log("add: "+localStorage["favs"]);
+            this.isFav = true;
         }
+    },
+    deleteAsFav:function(){
+        var favData = localStorage.favs || "[]";
+        var localFavs = JSON.parse(favData);
+        localFavs.splice(localFavs.indexOf(this.attributes.id));
+        localStorage.setItem("favs", JSON.stringify(localFavs));
+        this.isFav = false;
     }
-    */
 };
