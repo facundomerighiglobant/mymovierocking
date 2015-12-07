@@ -8,13 +8,20 @@
 body {
   padding: 0;
 }
-
+.row{
+  padding-top: 20px;
+}
+a{
+  cursor:pointer;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
+  margin-top:10px;
+  background-color: #404040;
 }
 
 /* Custom page header */
@@ -58,7 +65,28 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
-
+body .header{
+  background-color: #404040;
+  padding-top:20px;
+}
+.headerTitleContainer .container{
+  background-color: none;
+  font-size: 40px;
+}
+body .header .headerTitleContainer{
+  color:#000;
+  background-color: #BFBFBF;
+  padding: 20px;
+}
+.moviesTable{
+  width:100%;
+}
+.moviesTable td,th{
+  padding:10px;
+}
+.moviesTable table tr:first-child{
+  background-color: #6E6E6E;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
