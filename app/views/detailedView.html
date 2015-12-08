@@ -1,23 +1,23 @@
 <container>
 <div class="row">
   <div class="col-md-12">
-  	<a href="/#/">
-  		<button type="button" class="btn btn-default">
+  	
+  		<button type="button" class="btn btn-default" onclick="window.location.hash = '/'">
 		  <span class="glyphicon glyphicon-chevron-left" ></span> Volver
 		</button>
-	</a>
+	
   </div>
 </div>
 <div class="row">
   <div class="col-md-3">
-  	<img ng-src="https://image.tmdb.org/t/p/w300/{{selMovie.attributes.poster_path}}" width="100%">
+  	<img ng-src="{{selMovie.getPosterUrl()}}" width="100%">
   </div>
   <div class="col-md-9">
   	<section>
 		<h1>{{selMovie.attributes.title}}</h1>
 	</section>
 	<button type="button" class="btn btn-default" ng-click="changeFav()">
-	  <span class="glyphicon glyphicon-star"></span> {{favText}}
+	  <span class="glyphicon glyphicon-star"></span> {{isFav ? 'Delete from favourites' : 'Add to favourites'}}
 	</button>
   </div>
 </div>
