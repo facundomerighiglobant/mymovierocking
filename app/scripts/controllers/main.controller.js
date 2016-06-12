@@ -13,13 +13,8 @@ app.controller('MainCtrl',['$scope', 'MovieSrv', function ($scope, MovieSrv) {
 
   MovieSrv.init();
 
-  $scope.getMovies = function() {
-    MovieSrv.getMovies().then(function(movies) {
-      console.log(movies);
-      return movies;
-    })
-  };
-
-  $scope.getMovies();
+  MovieSrv.getMovies(function(movies) {
+    $scope.movies = movies;
+  });
   
 }]);

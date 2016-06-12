@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('mymovierockingApp');
 
 app.service('MovieSrv', ['$http', function($http) {
@@ -11,8 +13,17 @@ app.service('MovieSrv', ['$http', function($http) {
     })
   };
 
-  this.getMovies = function() {
-    return movies;
-  }
+  this.getMovies = function(succes) {
+    movies.then(function(movies) {
+      console.log(movies);
+      var movieList = [];
+
+      for(var i = 0; i < movies.length; i++) {
+        movieList[i] = new Movie(movies[i]);
+      }
+
+      succes(movieList);
+    })
+  };
 
 }]);
