@@ -81,3 +81,8 @@ body {
     border-bottom: 0;
   }
 }
+
+.movie-card {
+  display: inline-block;
+  height: 600px;
+}

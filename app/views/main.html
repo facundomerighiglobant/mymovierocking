@@ -1,3 +1,10 @@
-<div class="jumbotron">
-  <button class="btn">test</button>
+<div class="row">
+  <div ng-repeat="movie in movies">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center">
+      <div class="movie-card">
+        <h3> {{ movie.title }} </h3>
+        <img class="img-responsive" src="{{ movie.poster }}" alt="{{ movie.title }} poster">
+      </div>
+    </div>
+  </div>
 </div>
