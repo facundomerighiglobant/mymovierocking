@@ -23,38 +23,57 @@ app.config(function($routeProvider) {
     })
     .when('/movies', {
       templateUrl: 'views/movies.html',
-      controller: 'MoviesCtrl',
-      controllerAs: 'movies'
     })
     .when('/contact', {
       templateUrl: 'views/contact.html',
-      controller: 'MainCtrl',
-      controllerAs: 'main'
+    })
+    .when('/movie-detail', {
+      templateUrl: 'views/movie-detail.html',
     })
     .otherwise({
       redirectTo: 'views/404.html'
     });
 });
 
-// app.directive('dataFavorite', [function() {
-//   return {
-//     restrict: 'E',
-//     template: 'datafavorite.html',
-//     link: function() {
-//       let favoriteSelected = false; 
-//       selectFavorite(id) { 
-//         if (favoriteSelected) {
-//           //ALGO 
-//         } else {
-//           favoriteSelected = true;
-//           localStorage.setItem(,id);
-//           console.log(id);
-//         }
-//       }
-//     },
-//     scope: {
-//       key1: '=',
-//       key2: '&'
-//     }
-//   };
-// }]);
+angular.module('mymovierockingApp').directive('dataFavorite', [function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'views/dataFavorite.html',
+    scope: {
+      idMovie: '='
+    },
+    link: function(scope, element, attrs) {
+
+      element.on('click', onClick);
+
+      function onClick() {
+        console.log('click');
+        var data = JSON.parse(localStorage.getItem('favoriteMovies'));
+        // data[attrs.idMovie]
+        if (scope.favoriteMovie) {
+          scope.favoriteMovie = false;
+        } else {
+          if (!data[idMovie]) {
+            data.push(idMovie);
+            localStorage.setItem('favoriteMovies', JSON.stringify(data));
+          }
+
+          scope.favoriteMovie = true;
+        }
+      }
+      // var favoriteSelected = false; 
+      // scope.selectFavorite = function() {
+      //   console.log('favorito');
+      // };
+      // selectFavorite(id){ 
+      //   // if (favoriteSelected) {
+      //   //   //ALGO 
+      //   // } else {
+      //   //   favoriteSelected = true;
+      //   //   localStorage.setItem(id);
+      //   //   console.log(id);
+      //   }
+      // }
+    }
+  };
+}]);

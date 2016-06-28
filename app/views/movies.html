@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <h1>Most Popular Movies</h1>
+      <data-favorite></data-favorite>
+</div>
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 center-block" ng-repeat="movie in allMovies" ng-click="movieDetail(movie)">
+    <img src="#" class="img-responsive img-rounded center-block" alt="" ng-src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+    <h4 class="text-center text-capitalize">{{ movie.original_title }}</h4>
+  </div>
+</div>

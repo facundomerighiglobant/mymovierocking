@@ -1,0 +1,11 @@
+// ULTIMOS ESTRENOS MÁS POPULARES
+https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=579989834308dc1b0309510990ad9246&page=1
+
+// VISTA DETALLE
+http://api.themoviedb.org/3/movie/269149?api_key=579989834308dc1b0309510990ad9246
+
+// RUTA DE IMAGEN DE PORTADA
+http://image.tmdb.org/t/p/w300/{{ }}
+
+// IMAGEN GENERAL
+http://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}

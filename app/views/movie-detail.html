@@ -1,0 +1,19 @@
+<div class="row">
+  <div text-center>
+    <img src="#" class="img-responsive img-rounded center-block" alt="" ng-src="http://image.tmdb.org/t/p/w1000/{{ movie.backdrop_path }}">
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <h1>{{ movie.title }}</h1>
+    <p class="small">
+      Realese : {{ movie.release_date }}
+    </p>
+    <div>
+      <h4>Overview :</h4>
+      <p>
+        {{ movie.overview }}
+      </p>
+      <data-favorite id-movie="{{movie.id}}"></data-favorite>
+    </div>
+    <a ng-href="#/movies">Volver</a>
+  </div>
+</div>
