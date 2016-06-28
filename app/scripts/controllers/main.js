@@ -1,13 +1,29 @@
-'use strict';
+(function (angular, undefined) { 'use strict';  
 
-/**
- * @ngdoc function
- * @name mymovierockingApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the mymovierockingApp
- */
-angular.module('mymovierockingApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.test = 'testin';
-  });
+  angular.module('mymovierockingApp')
+    .controller('MainCtrl', function($scope, moviesSrv, $location ){
+    
+      var movies = moviesSrv.getMovies();      
+      if ( movies === undefined) {
+          var moviesArray = [];
+          var promise = moviesSrv.getFromApi();
+          promise.$promise.then(function (infoFromApi){   
+              infoFromApi.results.forEach(function(elem){
+                moviesArray.push(new Movie(elem));
+              });
+              $scope.movies = moviesArray;
+              moviesSrv.setMovies(moviesArray);
+          }, function(){
+              console.log('Error');
+          });
+      }else{
+        $scope.movies = movies;
+      }
+
+      $scope.changeToDetailView = function(movie) {
+          moviesSrv.setCurrentMovieDetail(movie);
+          $location.path('/movie/' + movie.id);
+       };
+
+    });
+}(angular));
