@@ -1,13 +1,4 @@
-'use strict';
-
-/**
- * @ngdoc overview
- * @name mymovierockingApp
- * @description
- * # mymovierockingApp
- *
- * Main module of the application.
- */
+(function (angular, undefined) { 'use strict';
 angular
   .module('mymovierockingApp', [
     'ngAnimate',
@@ -16,19 +7,19 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/movie/:id', {
+        templateUrl: 'views/movie.html',
+        controller: 'MovieCtrl',        
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+  }(angular));

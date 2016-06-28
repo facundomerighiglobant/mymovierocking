@@ -1,0 +1,22 @@
+
+<div class="media movieDetail">
+  	<div class="media-left">
+		<img ng-src="{{ movie.posterUrl }}" alt="Image not found" class="img-rounded" >
+  	</div>
+  	<div class="media-body">
+	    <h3 class="media-heading title"> {{ movie.title }} </h3>
+	    <br>
+		<p class="info"> {{ movie.overview }} </p>	
+		<br>
+		<div  class="backButton" >
+			<button class="btn btn-info info" ng-click="goBackToMovies()"> Back to Movies </button>
+		</div>
+	</div>
+	<div class="media-right">	
+		 <favorite-directive movie="movie"> </favorite-directive> 
+	</div>
+	
+  </div>
+
+
+
